@@ -101,7 +101,13 @@ function TransactionItem({ tx }: { tx: Transaction }) {
   const isPositive = tx.amount > 0;
 
   return (
-    <Pressable style={styles.txItem}>
+    <Pressable 
+      style={styles.txItem}
+      onPress={() => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        // Navigate to detail page logic here
+      }}
+    >
       <View style={[styles.txIcon, { backgroundColor: (colorMap[tx.type] || C.primary) + "20" }]}>
         <Ionicons name={(iconMap[tx.type] || "ellipse") as any} size={18} color={colorMap[tx.type] || C.primary} />
       </View>

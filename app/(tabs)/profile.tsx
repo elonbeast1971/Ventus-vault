@@ -214,7 +214,16 @@ export default function ProfileScreen() {
               { icon: "document-text-outline", label: "Terms & Privacy", color: C.text },
               { icon: "log-out-outline", label: "Sign Out", color: C.danger },
             ].map((item) => (
-              <Pressable key={item.label} style={styles.menuItem} onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)}>
+              <Pressable 
+                key={item.label} 
+                style={styles.menuItem} 
+                onPress={() => {
+                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                  if (item.label === "Saved Banks") {
+                    // Navigate to saved banks
+                  }
+                }}
+              >
                 <Ionicons name={item.icon as any} size={20} color={item.color} />
                 <Text style={[styles.menuLabel, { color: item.color }]}>{item.label}</Text>
                 <Ionicons name="chevron-forward" size={16} color={C.textTertiary} />
