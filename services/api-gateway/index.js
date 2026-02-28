@@ -51,14 +51,36 @@ const proxyOptions = (target) => ({
   pathRewrite: (path, req) => path.replace(/^\/api/, ''),
 });
 
-app.use('/api/auth', proxyOptions(process.env.AUTH_URL || 'http://localhost:3001'));
-app.use('/api/wallet', verifyJWT, proxyOptions(process.env.WALLET_URL || 'http://localhost:3002'));
-app.use('/api/trade', verifyJWT, proxyOptions(process.env.TX_URL || 'http://localhost:3003'));
-app.use('/api/p2p', verifyJWT, proxyOptions(process.env.TX_URL || 'http://localhost:3003'));
-app.use('/api/history', verifyJWT, proxyOptions(process.env.TX_URL || 'http://localhost:3003'));
-app.use('/api/rate', proxyOptions(process.env.RATE_URL || 'http://localhost:3004'));
-app.use('/api/ai', verifyJWT, proxyOptions(process.env.AI_URL || 'http://localhost:3005'));
-app.use('/api/notifications', verifyJWT, proxyOptions(process.env.NOTIF_URL || 'http://localhost:3006'));
+// Local stub for token refresh to help frontend development when auth service isn't running.
+app.post('/api/auth/refresh', async (req, res) => {
+  try {
+    const { refreshToken } = req.body || {};
+    if (!refreshToken) {
+      req.log && req.log.warn('missing refresh token');
+      return res.status(400).json({ success: false, error: 'Missing refresh token', code: 'NO_REFRESH' });
+    }
+
+    // In dev mode return a signed access token and a new mock refresh token.
+    const payload = { sub: 'dev-user', iat: Math.floor(Date.now() / 1000) };
+    const accessToken = jwt.sign(payload, process.env.JWT_SECRET || 'secret', { expiresIn: '15m' });
+    const newRefresh = `mock-refresh-${Date.now()}`;
+
+    return res.json({ success: true, data: { accessToken, refreshToken: newRefresh } });
+  } catch (err) {
+    req.log && req.log.error({ err }, 'refresh stub error');
+    return res.status(500).json({ success: false, error: 'Refresh failed', code: 'REFRESH_ERROR' });
+  }
+});
+
+// Proxy remaining API routes to their upstream services
+app.use('/api/auth', createProxyMiddleware(proxyOptions(process.env.AUTH_URL || 'http://localhost:3001')));
+app.use('/api/wallet', verifyJWT, createProxyMiddleware(proxyOptions(process.env.WALLET_URL || 'http://localhost:3002')));
+app.use('/api/trade', verifyJWT, createProxyMiddleware(proxyOptions(process.env.TX_URL || 'http://localhost:3003')));
+app.use('/api/p2p', verifyJWT, createProxyMiddleware(proxyOptions(process.env.TX_URL || 'http://localhost:3003')));
+app.use('/api/history', verifyJWT, createProxyMiddleware(proxyOptions(process.env.TX_URL || 'http://localhost:3003')));
+app.use('/api/rate', createProxyMiddleware(proxyOptions(process.env.RATE_URL || 'http://localhost:3004')));
+app.use('/api/ai', verifyJWT, createProxyMiddleware(proxyOptions(process.env.AI_URL || 'http://localhost:3005')));
+app.use('/api/notifications', verifyJWT, createProxyMiddleware(proxyOptions(process.env.NOTIF_URL || 'http://localhost:3006')));
 
 app.get('/health', (req, res) => res.json({ success: true, data: { status: 'ok', service: 'gateway' } }));
 
