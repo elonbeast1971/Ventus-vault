@@ -1,0 +1,235 @@
+{
+  "app": {
+    "name": "VentusVault",
+    "tagline": "Trade Smarter. Cash Out Faster.",
+    "version": "1.0.0",
+    "description": "VentusVault is a world-class trading super-app that combines gift card trading, cryptocurrency exchange, instant Naira payouts, bill payments, P2P trading, AI-powered trading suggestions, and gamified rewards into one seamless platform."
+  },
+  "problem_statement": {
+    "market_gap": "Nigerian traders face fragmented trading experiences across multiple platforms with slow payouts, poor rates, limited crypto support, and zero engagement incentives.",
+    "vs_competitors": {
+      "KSBTECH": {
+        "weaknesses": [
+          "Slow payout processing (15-30 min average)",
+          "Limited crypto asset support",
+          "No gamification or loyalty rewards",
+          "Basic UI with no real-time rate updates",
+          "No AI-powered trading recommendations"
+        ],
+        "ventusvault_advantage": "Instant Naira payouts under 60 seconds, live rate ticker, glass card rewards system"
+      },
+      "CardTonic": {
+        "weaknesses": [
+          "Gift card only - no crypto trading",
+          "No integrated wallet system",
+          "No bill payment features",
+          "Manual rate checking required",
+          "No referral incentive program"
+        ],
+        "ventusvault_advantage": "All-in-one super-app with gift cards + crypto + bills + P2P + rewards in single wallet"
+      }
+    },
+    "solution": "VentusVault consolidates all trading needs into one premium platform with instant payouts, live rates, AI suggestions, and gamified rewards that keep traders engaged and earning."
+  },
+  "user_types": [
+    {
+      "type": "basic_trader",
+      "label": "Basic Trader",
+      "description": "New users getting started with gift card and crypto trading",
+      "features": [
+        "Gift card trading (up to 500 USD/day)",
+        "Basic crypto buy/sell (BTC, ETH, USDT)",
+        "Naira wallet with standard payouts",
+        "Bill payments and airtime",
+        "1 free spin per day on reward wheel",
+        "Basic referral program (2% bonus)"
+      ],
+      "daily_limit_usd": 500,
+      "payout_speed": "under 5 minutes"
+    },
+    {
+      "type": "vip_trader",
+      "label": "VIP Trader",
+      "description": "Active traders with higher volume and premium perks",
+      "features": [
+        "Gift card trading (up to 5,000 USD/day)",
+        "Full crypto suite (BTC, ETH, USDT, SOL)",
+        "Priority instant payouts (under 60 seconds)",
+        "P2P trading access",
+        "3 free spins per day on reward wheel",
+        "Enhanced referral program (5% bonus)",
+        "AI-powered trading suggestions",
+        "Dedicated support channel"
+      ],
+      "daily_limit_usd": 5000,
+      "payout_speed": "under 60 seconds"
+    },
+    {
+      "type": "investor",
+      "label": "Investor",
+      "description": "High-volume traders and portfolio holders",
+      "features": [
+        "Unlimited gift card trading",
+        "Full crypto suite with margin indicators",
+        "Instant payouts with zero fees",
+        "P2P trading with escrow protection",
+        "5 free spins per day + exclusive rewards",
+        "Premium referral program (8% bonus + tier bonuses)",
+        "Advanced AI portfolio recommendations",
+        "Personal account manager",
+        "Early access to new features"
+      ],
+      "daily_limit_usd": 50000,
+      "payout_speed": "instant"
+    }
+  ],
+  "features": {
+    "core": [
+      {
+        "id": "F001",
+        "name": "Gift Card Trading",
+        "priority": "P0",
+        "category": "trading",
+        "description": "Buy and sell gift cards (iTunes, Amazon, Steam, Google Play, etc.) with instant rate calculation and Naira payout",
+        "user_stories": [
+          "As a trader, I want to select a gift card brand and enter the amount so I can see the Naira value instantly",
+          "As a trader, I want to upload my gift card image/code so the system can verify and process my trade",
+          "As a trader, I want to track my gift card trade status in real-time"
+        ]
+      },
+      {
+        "id": "F002",
+        "name": "Crypto Trading",
+        "priority": "P0",
+        "category": "trading",
+        "description": "Trade BTC, ETH, USDT, and SOL with live market rates and instant conversion to Naira",
+        "user_stories": [
+          "As a trader, I want to see live crypto prices (BTC, ETH, USDT, SOL) with price change indicators",
+          "As a trader, I want to buy or sell crypto and see the Naira equivalent before confirming",
+          "As an investor, I want to view my crypto portfolio with profit/loss tracking"
+        ]
+      },
+      {
+        "id": "F003",
+        "name": "Instant Naira Payouts",
+        "priority": "P0",
+        "category": "wallet",
+        "description": "Lightning-fast Naira payouts to any Nigerian bank account",
+        "user_stories": [
+          "As a trader, I want to withdraw my Naira balance to my bank account instantly",
+          "As a trader, I want to save multiple bank accounts for quick payouts",
+          "As a trader, I want to see my payout history with timestamps"
+        ]
+      },
+      {
+        "id": "F004",
+        "name": "Secure Wallet",
+        "priority": "P0",
+        "category": "wallet",
+        "description": "Multi-currency wallet with Naira balance, transaction history, and security features",
+        "user_stories": [
+          "As a user, I want to see my wallet balance prominently on the home screen",
+          "As a user, I want to view all my transactions with filters and search",
+          "As a user, I want my wallet protected with PIN/biometric authentication"
+        ]
+      },
+      {
+        "id": "F005",
+        "name": "Live Rates",
+        "priority": "P0",
+        "category": "trading",
+        "description": "Real-time rate display for gift cards and crypto assets",
+        "user_stories": [
+          "As a trader, I want to see live crypto prices updating in real-time on my dashboard",
+          "As a trader, I want to see current gift card rates before initiating a trade",
+          "As a trader, I want to receive rate alerts when prices hit my target"
+        ]
+      },
+      {
+        "id": "F006",
+        "name": "Bills & Airtime",
+        "priority": "P1",
+        "category": "services",
+        "description": "Pay utility bills (electricity, cable TV, internet) and purchase airtime/data from wallet balance",
+        "user_stories": [
+          "As a user, I want to buy airtime for any Nigerian network from my wallet",
+          "As a user, I want to pay my electricity, cable, and internet bills in-app",
+          "As a user, I want to save frequent bill payment details for quick reuse"
+        ]
+      },
+      {
+        "id": "F007",
+        "name": "P2P Trading",
+        "priority": "P1",
+        "category": "trading",
+        "description": "Peer-to-peer trading marketplace with escrow protection",
+        "user_stories": [
+          "As a VIP trader, I want to create buy/sell offers for other traders",
+          "As a trader, I want to browse P2P offers and trade directly with other users",
+          "As a trader, I want escrow protection so my funds are safe during P2P trades"
+        ]
+      },
+      {
+        "id": "F008",
+        "name": "AI Trading Suggestions",
+        "priority": "P2",
+        "category": "intelligence",
+        "description": "AI-powered recommendations for optimal trading times, best rates, and portfolio optimization",
+        "user_stories": [
+          "As a VIP trader, I want AI suggestions on the best time to sell my gift cards",
+          "As an investor, I want AI-powered portfolio recommendations based on market trends",
+          "As a trader, I want personalized alerts when trading conditions are favorable"
+        ]
+      },
+      {
+        "id": "F009",
+        "name": "Glass Card Rewards",
+        "priority": "P0",
+        "category": "engagement",
+        "description": "Gamified reward system with spinning glass cards that reveal bonuses, cashback, and trading credits",
+        "user_stories": [
+          "As a user, I want to spin a reward wheel daily to win bonuses and cashback",
+          "As a user, I want to see my collected rewards and their values",
+          "As a VIP trader, I want exclusive reward tiers with higher value prizes"
+        ]
+      },
+      {
+        "id": "F010",
+        "name": "Referral System",
+        "priority": "P0",
+        "category": "engagement",
+        "description": "Multi-tier referral program with unique codes, invite tracking, and bonus rewards",
+        "user_stories": [
+          "As a user, I want a unique referral code I can share with friends",
+          "As a user, I want to track how many people signed up with my code",
+          "As a user, I want to earn bonus rewards when my referrals complete trades"
+        ]
+      }
+    ]
+  },
+  "mvp_priority": {
+    "P0_must_have": [
+      "F001 - Gift Card Trading",
+      "F002 - Crypto Trading (Live Rates)",
+      "F003 - Instant Naira Payouts",
+      "F004 - Secure Wallet",
+      "F005 - Live Rates Dashboard",
+      "F009 - Glass Card Rewards UI",
+      "F010 - Referral System"
+    ],
+    "P1_should_have": [
+      "F006 - Bills & Airtime",
+      "F007 - P2P Trading"
+    ],
+    "P2_nice_to_have": [
+      "F008 - AI Trading Suggestions"
+    ]
+  },
+  "tech_stack": {
+    "frontend": "React Native (Expo)",
+    "backend": "Express.js + TypeScript",
+    "state": "AsyncStorage + React Context",
+    "navigation": "Expo Router (file-based)",
+    "design": "Custom dark theme with gold accents, glass card UI effects"
+  }
+}
