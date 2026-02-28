@@ -1,0 +1,1 @@
+Add assets (icons, Lottie JSONs) here. Use warm glass SVGs and subtle particles for wind effect. Lottie files are recommended for the confetti and particles.

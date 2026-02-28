@@ -13,12 +13,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Wallet
   app.get("/api/wallet/balance", (req, res) => {
+    // placeholder: no user info populated
     res.json({ balance: "0.00", currency: "USD" });
   });
 
   // Trade
   app.post("/api/trade/execute", (req, res) => {
+    // in a microservices setup this would forward to transaction engine
     res.json({ status: "success", txId: "mock-tx-123" });
+  });
+
+  // Peer‑to‑peer transfer (P2P)
+  app.post("/api/p2p/transfer", (req, res) => {
+    // no sender/receiver or amounts populated yet
+    res.json({ status: "queued", transferId: "p2p-mock-001" });
   });
 
   // History
